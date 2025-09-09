@@ -1,0 +1,81 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="center-form">
+    <button class="btn" id="all-predictions" onclick ="window.location.href='/Categories';">All Predictions</button>
+    <form method="post" id="submit-form">
+        <input asp-for="CategoryId" id="category-id" placeholder="Enter Category ID" />
+        <button type="submit" class="btn">Predict</button>
+    </form>
+</div>
+
+<style>
+
+    /* center the form both vertically & horizontally */
+    .center-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* full viewport height */
+        background-color: #f9f9f9; /* light page background */
+        margin: 0;
+    }
+
+    /* lay out the inputs & button side-by-side */
+    #submit-form {
+        display: flex;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        border-radius: 4px;
+        overflow: hidden; /* clip child rounded corners */
+    }
+
+    /* text input styling */
+    #category-id {
+        padding: 0.6em 1em;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-right: none; /* remove border between input & button */
+        outline: none;
+    }
+
+    #category-id::placeholder {
+        color: #999;
+    }
+
+    /* button styling */
+    .btn {
+        padding: 0.6em 1.2em;
+        font-size: 1rem;
+        border: 1px solid #4c43b0;
+        background-color: #4c43b0;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    #submit-form .btn:hover {
+        background-color: #3c339c;
+    }
+
+    /* position the All Predictions button at the top-right */
+    #all-predictions {
+        position: fixed;
+        top: 1rem; /* distance from the top edge */
+        right: 1rem; /* distance from the right edge */
+        z-index: 1000; /* ensure it sits above other content */
+    }
+
+    /* reuse your .btn hover styling (optional if already defined) */
+    #all-predictions:hover {
+        background-color: #3c339c; /* or whatever hover color your .btn uses */
+    }
+
+</style>
+
+@if (Model.Message != null)
+{
+    <script>alert("@Model.Message");</script>
+}

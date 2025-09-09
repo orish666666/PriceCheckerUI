@@ -1,0 +1,84 @@
+@page
+@model CategoriesModel
+@{
+    ViewData["Title"] = "Predicted Categories";
+}
+
+<h1>Predicted Categories</h1>
+<ul>
+    @foreach (var cat in Model.Categories)
+    {
+        <li>
+            <a asp-page="/Predictions" asp-route-categoryId="@cat.CategoryId" asp-for="@cat.CategoryName">
+            <img src="@cat.CategoryImage" style="max-width:100%;height:auto;" />
+            <br />
+            @cat.CategoryName
+        </a></li>
+    }
+</ul>
+
+<style>
+
+    /* 1. Page setup */
+    body {
+        margin: 0;
+        padding: 2rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: #f9f9f9;
+    }
+
+    /* 2. Heading */
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        max-width: 900px; /* increase to fit 3 items comfortably */
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* exactly 3 columns per row */
+        gap: 1rem;
+    }
+
+
+    ul li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: 500;
+        transition: box-shadow 0.2s, background-color 0.2s;
+        height: 100%; /* ensures uniform height */
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+
+    ul li a:hover,
+    ul li a:focus {
+        background-color: #f0f8ff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        outline: none;
+    }
+
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 0.5rem;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+</style>

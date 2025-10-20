@@ -1,0 +1,71 @@
+﻿@page "{categoryId}"
+@model PredictionsModel
+@using System.Text.Json
+@{
+    ViewData["Title"] = "Price Predictions";
+}
+
+<h1>Price Predictions for @Model.CategoryName</h1>
+<form method="get">
+    <select asp-for="@Model.Freq" onchange="this.form.submit()">
+        <option value="h">Daily</option>
+        <option value="D">Weekly</option>
+        <option value="W">Monthly</option>
+        <option value="ME">Yearly</option>
+    </select>
+</form>
+<img src="@Model.Image_string" style="max-width:100%;height:auto;" />
+
+<style>
+
+    /* 1) Page container */
+    body {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+    /* 2) Heading */
+    h1 {
+        text-align: center;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    /* 3) Form styling */
+    form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    /* 4) Dropdown styling */
+    form select {
+        padding: 0.5em 1em;
+        font-size: 1rem;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: border-color 0.2s;
+    }
+
+    form select:hover, form select:focus {
+        border-color: #888;
+        outline: none;
+    }
+
+    /* 5) Chart image styling */
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+        border-radius: 6px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+</style>

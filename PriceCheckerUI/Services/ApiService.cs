@@ -29,5 +29,3 @@ namespace PriceCheckerUI.Services
         }
     }
 }
-
-
